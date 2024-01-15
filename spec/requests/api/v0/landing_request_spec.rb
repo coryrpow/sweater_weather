@@ -18,8 +18,6 @@ RSpec.describe 'Landing Page API endpoints' do
       expect(forecast[:data][:id]).to be(nil)
       expect(forecast[:data][:type]).to eq("forecast")
       expect(forecast[:data][:attributes]).to be_a(Hash)
-      expect(forecast[:data][:attributes]).to have_key(:current_weather)
-      expect(forecast[:data][:attributes]).to be_a(Hash)
 
       expect(forecast[:data][:attributes]).to have_key(:current_weather)
       expect(forecast[:data][:attributes]).to have_key(:daily_weather)
