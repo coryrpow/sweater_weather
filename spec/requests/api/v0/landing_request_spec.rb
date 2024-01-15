@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe 'Landing Page API endpoints' do
   describe "/api/v0/weather" do
-    it "get requests all data needed for the landing page" do
+    it "get requests all data needed for the landing page", :vcr do
       # location = create(:location)
       location = Location.create!(city: "Denver", state: "CO")
 
@@ -92,7 +92,7 @@ RSpec.describe 'Landing Page API endpoints' do
       end
     end
 
-    it "does NOT return data that is not needed" do
+    it "does NOT return data that is not needed", :vcr do
       location = Location.create!(city: "Denver", state: "CO")
 
       get "/api/v0/forecast?location=#{location.city},#{location.state}"
