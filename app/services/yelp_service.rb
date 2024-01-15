@@ -2,9 +2,18 @@ class YelpService
 
   def self.get_restaurant(food_type, lat, lon)
     response = conn.get("businesses/search?term=#{food_type}&latitude=#{lat}&longitude=#{lon}")
-    parse = JSON.parse(response.body, symbolie_names: true)
+    parse = JSON.parse(response.body, symbolize_names: true)
     require 'pry';binding.pry
-
+    munchie_data = []
+    parse[:businesses].each do |b|
+      munchie_data << {
+        name: b[:name],
+        address: b[:location][:display_address].join(", "),
+        rating: b[:rating],
+        reviews: b[:review_count]
+      }
+    end
+    munchie_data
   end
 
   def self.get_url(url)
