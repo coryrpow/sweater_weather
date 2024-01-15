@@ -1,5 +1,4 @@
 class MapquestService
-
   def self.get_location(location)
     response = conn.get("address?key=#{Rails.application.credentials.mapquest[:key]}&location=#{location}")
     parse = JSON.parse(response.body, symbolize_names: true)
@@ -15,8 +14,5 @@ class MapquestService
 
   def self.conn
     Faraday.new(url: 'https://www.mapquestapi.com/geocoding/v1/')
-    # do |faraday|
-    #   faraday.params['mapquest_api_key'] = Rails.application.credentials.mapquest[:key]
-    # end
   end
 end
