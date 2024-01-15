@@ -4,8 +4,7 @@ RSpec.describe 'Munchies API endpoint' do
 
   location = 
   describe "/api/v1/munchies" do
-    it "get requests all data needed for the landing page" do
-      VCR.use_cassette("munchie_get") do
+    it "get requests all data needed for the landing page", :vcr do
         location = Location.create!(city: "Pueblo", state: "CO")
         
         get "/api/v1/munchies?destination=#{location.city},#{location.state}&food=italian"
@@ -14,7 +13,6 @@ RSpec.describe 'Munchies API endpoint' do
         expect(response.status).to eq(200)
 
         munchies = JSON.parse(response.body, symbolize_names: true)
-        # require 'pry';binding.pry
 
         expect(munchies).to be_a(Hash)
         expect(munchies[:data]).to be_a(Hash)
@@ -34,8 +32,6 @@ RSpec.describe 'Munchies API endpoint' do
 
         expect(munch[:forecast]).to be_a(Hash)
         expect(munch[:forecast].keys.count).to eq(2)
-
-        #this changes too often, I need to get vcr in here to test this info that changes too rapidly
 
         expect(munch[:forecast][:temperature]).to eq(3.9)
         expect(munch[:forecast]).to have_key(:temperature)
@@ -61,7 +57,6 @@ RSpec.describe 'Munchies API endpoint' do
         expect(munch[:restaurant]).to have_key(:reviews)
         expect(munch[:restaurant][:reviews]).to be_a(Integer)
         expect(munch[:restaurant][:reviews]).to eq(230)
-      end
     end
   end
 end

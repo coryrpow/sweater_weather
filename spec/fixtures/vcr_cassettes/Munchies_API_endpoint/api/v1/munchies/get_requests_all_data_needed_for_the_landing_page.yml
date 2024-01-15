@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 15 Jan 2024 19:41:31 GMT
+      - Mon, 15 Jan 2024 19:44:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -29,17 +29,17 @@ http_interactions:
       X-Ratelimit-Limit-2628000:
       - '1000000000'
       X-Ratelimit-Remaining-2628000:
-      - '999999907'
+      - '999999906'
       Ratelimit-Limit:
       - '1000000000'
       Ratelimit-Remaining:
-      - '999999907'
+      - '999999906'
       Ratelimit-Reset:
-      - '224309'
+      - '224119'
       X-Powered-By:
       - MapQuest
       X-Request-Id:
-      - 15677f40-b3de-11ee-a763-bb3832a8f318
+      - 86ad73d0-b3de-11ee-a763-bb3832a8f318
       Access-Control-Allow-Origin:
       - "*"
       Etag:
@@ -48,7 +48,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJpbmZvIjp7InN0YXR1c2NvZGUiOjAsImNvcHlyaWdodCI6eyJ0ZXh0IjoiwqkgMjAyNCBNYXBRdWVzdCwgSW5jLiIsImltYWdlVXJsIjoiaHR0cDovL2FwaS5tcWNkbi5jb20vcmVzL21xbG9nby5naWYiLCJpbWFnZUFsdFRleHQiOiLCqSAyMDI0IE1hcFF1ZXN0LCBJbmMuIn0sIm1lc3NhZ2VzIjpbXX0sIm9wdGlvbnMiOnsibWF4UmVzdWx0cyI6LTEsImlnbm9yZUxhdExuZ0lucHV0IjpmYWxzZX0sInJlc3VsdHMiOlt7InByb3ZpZGVkTG9jYXRpb24iOnsibG9jYXRpb24iOiJQdWVibG8sQ08ifSwibG9jYXRpb25zIjpbeyJzdHJlZXQiOiIiLCJhZG1pbkFyZWE2IjoiIiwiYWRtaW5BcmVhNlR5cGUiOiJOZWlnaGJvcmhvb2QiLCJhZG1pbkFyZWE1IjoiUHVlYmxvIiwiYWRtaW5BcmVhNVR5cGUiOiJDaXR5IiwiYWRtaW5BcmVhNCI6IlB1ZWJsbyIsImFkbWluQXJlYTRUeXBlIjoiQ291bnR5IiwiYWRtaW5BcmVhMyI6IkNPIiwiYWRtaW5BcmVhM1R5cGUiOiJTdGF0ZSIsImFkbWluQXJlYTEiOiJVUyIsImFkbWluQXJlYTFUeXBlIjoiQ291bnRyeSIsInBvc3RhbENvZGUiOiIiLCJnZW9jb2RlUXVhbGl0eUNvZGUiOiJBNVhBWCIsImdlb2NvZGVRdWFsaXR5IjoiQ0lUWSIsImRyYWdQb2ludCI6ZmFsc2UsInNpZGVPZlN0cmVldCI6Ik4iLCJsaW5rSWQiOiIwIiwidW5rbm93bklucHV0IjoiIiwidHlwZSI6InMiLCJsYXRMbmciOnsibGF0IjozOC4yNjM3NSwibG5nIjotMTA0LjYxMjUyfSwiZGlzcGxheUxhdExuZyI6eyJsYXQiOjM4LjI2Mzc1LCJsbmciOi0xMDQuNjEyNTJ9LCJtYXBVcmwiOiIifV19XX0=
-  recorded_at: Mon, 15 Jan 2024 19:41:31 GMT
+  recorded_at: Mon, 15 Jan 2024 19:44:41 GMT
 - request:
     method: get
     uri: https://api.yelp.com/v3/businesses/search?latitude=38.26375&longitude=-104.61252&term=italian
@@ -73,36 +73,36 @@ http_interactions:
       - keep-alive
       Content-Type:
       - application/json
-      X-Zipkin-Id:
-      - 0bbac7c7e35c92d2
-      X-B3-Sampled:
-      - '0'
       Ratelimit-Dailylimit:
       - '500.0'
       X-Routing-Service:
-      - routing-main--useast1-74f644dc4b-686s6; site=public_api_v3
+      - routing-main--useast1-74f644dc4b-cnn4p; site=public_api_v3
       Server:
       - envoy
+      Ratelimit-Remaining:
+      - '467.0'
       Ratelimit-Resettime:
       - '2024-01-16T00:00:00+00:00'
-      Ratelimit-Remaining:
-      - '468.0'
+      X-B3-Sampled:
+      - '0'
+      X-Zipkin-Id:
+      - 1f256a8a47044dd0
       X-Mode:
       - ro
       X-Proxied:
-      - 10-65-166-92-useast1bprod
+      - 10-65-176-91-useast1bprod
       X-Extlb:
-      - 10-65-166-92-useast1bprod
+      - 10-65-176-91-useast1bprod
       Cache-Control:
       - max-age=0, no-store, private, no-transform
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 15 Jan 2024 19:41:32 GMT
+      - Mon, 15 Jan 2024 19:44:42 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-pdk-kpdk1780134-PDK
+      - cache-pdk-katl1840045-PDK
       X-Cache:
       - MISS
       X-Cache-Hits:
@@ -320,7 +320,7 @@ http_interactions:
         CO 81005"]}, "phone": "+17195656655", "display_phone": "(719) 565-6655", "distance":
         3424.936854844432}], "total": 51, "region": {"center": {"longitude": -104.61252,
         "latitude": 38.26375}}}'
-  recorded_at: Mon, 15 Jan 2024 19:41:32 GMT
+  recorded_at: Mon, 15 Jan 2024 19:44:42 GMT
 - request:
     method: get
     uri: http://api.weatherapi.com/v1/forecast.json?days=5&key=<weather_api>&q=38.26375,%20-104.61252
@@ -340,7 +340,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 15 Jan 2024 19:41:33 GMT
+      - Mon, 15 Jan 2024 19:44:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -350,7 +350,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Server:
-      - BunnyCDN-IL1-941
+      - BunnyCDN-IL1-940
       Cdn-Pullzone:
       - '93447'
       Cdn-Uid:
@@ -362,11 +362,11 @@ http_interactions:
       Cache-Control:
       - public, max-age=180
       Via:
-      - 1.1 haproxy-api-1 (Varnish/7.3)
+      - 1.1 varnish (Varnish/6.0)
       X-Weatherapi-Qpm-Left:
       - '4999972'
       X-Varnish:
-      - '123881623118'
+      - '321166516'
       Cdn-Proxyver:
       - '1.04'
       Cdn-Requestpullsuccess:
@@ -374,20 +374,20 @@ http_interactions:
       Cdn-Requestpullcode:
       - '200'
       Cdn-Cachedat:
-      - 01/15/2024 19:41:33
+      - 01/15/2024 19:44:42
       Cdn-Edgestorageid:
       - '718'
       Cdn-Status:
       - '200'
       Cdn-Requestid:
-      - b40552c3b28b664d2301e798d62f2c12
+      - 51e5a9b061d86ed6fc1ba6866544721a
       Cdn-Cache:
       - EXPIRED
     body:
       encoding: ASCII-8BIT
       string: '{"location":{"name":"Pueblo","region":"Colorado","country":"United
-        States of America","lat":38.26,"lon":-104.61,"tz_id":"America/Denver","localtime_epoch":1705347654,"localtime":"2024-01-15
-        12:40"},"current":{"last_updated_epoch":1705347000,"last_updated":"2024-01-15
+        States of America","lat":38.26,"lon":-104.61,"tz_id":"America/Denver","localtime_epoch":1705347843,"localtime":"2024-01-15
+        12:44"},"current":{"last_updated_epoch":1705347000,"last_updated":"2024-01-15
         12:30","temp_c":-15.6,"temp_f":3.9,"is_day":1,"condition":{"text":"Overcast","icon":"//cdn.weatherapi.com/weather/64x64/day/122.png","code":1009},"wind_mph":2.2,"wind_kph":3.6,"wind_degree":60,"wind_dir":"ENE","pressure_mb":1023.0,"pressure_in":30.2,"precip_mm":0.16,"precip_in":0.01,"humidity":42,"cloud":100,"feelslike_c":-25.4,"feelslike_f":-13.6,"vis_km":16.0,"vis_miles":9.0,"uv":1.0,"gust_mph":15.7,"gust_kph":25.3},"forecast":{"forecastday":[{"date":"2024-01-15","date_epoch":1705276800,"day":{"maxtemp_c":-12.7,"maxtemp_f":9.2,"mintemp_c":-16.3,"mintemp_f":2.7,"avgtemp_c":-14.4,"avgtemp_f":6.0,"maxwind_mph":15.0,"maxwind_kph":24.1,"totalprecip_mm":1.37,"totalprecip_in":0.05,"totalsnow_cm":1.13,"avgvis_km":8.4,"avgvis_miles":5.0,"avghumidity":72,"daily_will_it_rain":0,"daily_chance_of_rain":65,"daily_will_it_snow":0,"daily_chance_of_snow":37,"condition":{"text":"Moderate
         snow","icon":"//cdn.weatherapi.com/weather/64x64/day/332.png","code":1219},"uv":2.0},"astro":{"sunrise":"07:14
         AM","sunset":"05:02 PM","moonrise":"10:14 AM","moonset":"10:16 PM","moon_phase":"Waxing
@@ -552,5 +552,5 @@ http_interactions:
         21:00","temp_c":-5.1,"temp_f":22.9,"is_day":0,"condition":{"text":"Clear","icon":"//cdn.weatherapi.com/weather/64x64/night/113.png","code":1000},"wind_mph":2.0,"wind_kph":3.2,"wind_degree":53,"wind_dir":"NE","pressure_mb":1026.0,"pressure_in":30.29,"precip_mm":0.0,"precip_in":0.0,"snow_cm":0.0,"humidity":76,"cloud":13,"feelslike_c":-6.8,"feelslike_f":19.8,"windchill_c":-6.8,"windchill_f":19.8,"heatindex_c":-5.1,"heatindex_f":22.9,"dewpoint_c":-8.8,"dewpoint_f":16.2,"will_it_rain":0,"chance_of_rain":0,"will_it_snow":0,"chance_of_snow":0,"vis_km":10.0,"vis_miles":6.0,"gust_mph":3.8,"gust_kph":6.1,"uv":1.0},{"time_epoch":1705726800,"time":"2024-01-19
         22:00","temp_c":-5.4,"temp_f":22.2,"is_day":0,"condition":{"text":"Clear","icon":"//cdn.weatherapi.com/weather/64x64/night/113.png","code":1000},"wind_mph":2.2,"wind_kph":3.6,"wind_degree":44,"wind_dir":"NE","pressure_mb":1025.0,"pressure_in":30.28,"precip_mm":0.0,"precip_in":0.0,"snow_cm":0.0,"humidity":78,"cloud":12,"feelslike_c":-7.1,"feelslike_f":19.1,"windchill_c":-7.1,"windchill_f":19.1,"heatindex_c":-5.4,"heatindex_f":22.2,"dewpoint_c":-8.7,"dewpoint_f":16.4,"will_it_rain":0,"chance_of_rain":0,"will_it_snow":0,"chance_of_snow":0,"vis_km":10.0,"vis_miles":6.0,"gust_mph":4.3,"gust_kph":6.9,"uv":1.0},{"time_epoch":1705730400,"time":"2024-01-19
         23:00","temp_c":-5.6,"temp_f":21.9,"is_day":0,"condition":{"text":"Clear","icon":"//cdn.weatherapi.com/weather/64x64/night/113.png","code":1000},"wind_mph":2.5,"wind_kph":4.0,"wind_degree":70,"wind_dir":"ENE","pressure_mb":1025.0,"pressure_in":30.27,"precip_mm":0.0,"precip_in":0.0,"snow_cm":0.0,"humidity":80,"cloud":14,"feelslike_c":-7.7,"feelslike_f":18.2,"windchill_c":-7.7,"windchill_f":18.2,"heatindex_c":-5.6,"heatindex_f":21.9,"dewpoint_c":-8.6,"dewpoint_f":16.5,"will_it_rain":0,"chance_of_rain":0,"will_it_snow":0,"chance_of_snow":0,"vis_km":10.0,"vis_miles":6.0,"gust_mph":4.8,"gust_kph":7.8,"uv":1.0}]}]}}'
-  recorded_at: Mon, 15 Jan 2024 19:41:33 GMT
+  recorded_at: Mon, 15 Jan 2024 19:44:42 GMT
 recorded_with: VCR 6.2.0

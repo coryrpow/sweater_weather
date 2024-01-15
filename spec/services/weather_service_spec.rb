@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe WeatherService do
   context 'class methods' do
     context '#get_city_weather' do
-      it 'returns a hash of weather data for specific lat and lon coordinates' do
+      it 'returns a hash of weather data for specific lat and lon coordinates', :vcr do
         weather = WeatherService.get_city_weather(38.26375, -104.61252)
         # require 'pry';binding.pry
         expect(weather).to be_a(Hash)
@@ -83,14 +83,15 @@ RSpec.describe WeatherService do
     end
 
     context "get_munchie_weather" do
-      xit "returns a hash of only needed data for a restaurant" do
+      it "returns a hash of only needed data for a restaurant", :vcr do
         weather = WeatherService.get_munchie_weather(38.26375, -104.61252)
 
         expect(weather).to be_a(Hash)
         expect(weather.keys.count).to eq(2)
-        expect(weather[:temperature]).to be_a(String)
+        expect(weather[:temperature]).to be_a(Float)
+        expect(weather[:temperature]).to eq(3.9)
         expect(weather[:summary]).to be_a(String)
-
+        expect(weather[:summary]).to eq("Overcast")
       end
     end
   end

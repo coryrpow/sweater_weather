@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MapquestService do
   context 'class methods' do
     context '#get_location' do
-      it 'returns lat and lon of a city' do
+      it 'returns lat and lon of a city', :vcr do
           location = Location.create!(city: "Denver", state: "CO")
           mapquest = MapquestService.get_location("#{location.city},#{location.state}")
           # require 'pry';binding.pry
