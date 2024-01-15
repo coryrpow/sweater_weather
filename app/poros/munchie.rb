@@ -8,7 +8,7 @@ class Munchie
     # require 'pry';binding.pry
     @id = nil
     @destination_city = location
-    @forecast = restaurant_response
-    @restaurant = weather_response
+    @forecast = weather_response
+    @restaurant = restaurant_response
   end
 end
