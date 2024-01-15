@@ -13,6 +13,7 @@ RSpec.describe 'Munchies API endpoint' do
       expect(response.status).to eq(200)
 
       munchies = JSON.parse(response.body, symbolize_names: true)
+      # require 'pry';binding.pry
 
       expect(munchies).to be_a(Hash)
       expect(munchies[:data]).to be_a(Hash)
@@ -21,11 +22,23 @@ RSpec.describe 'Munchies API endpoint' do
       expect(munchies[:data][:attributes]).to be_a(Hash)
       expect(munchies[:data][:attributes].keys.count).to eq(3)
 
-      # expect(munchies[:data][:attributes]).to have_key(:)
-      # expect(munchies[:data][:attributes]).to have_key(:daily_weather)
-      # expect(munchies[:data][:attributes]).to have_key(:hourly_weather)
+      expect(munchies[:data][:attributes]).to have_key(:destination_city)
+      expect(munchies[:data][:attributes]).to have_key(:forecast)
+      expect(munchies[:data][:attributes]).to have_key(:restaurant)
 
-      munch = munchies[:data][:attributes]
+      munch1 = munchies[:data][:attributes]
+
+      expect(munch1[:destination_city]).to be_a(String)
+      expect(munch1[:destination_city]).to eq("pueblo,co")
+
+      expect(munch1[:forecast]).to be_a(Hash)
+      expect(munch1[:forecast].keys.count).to eq(2)
+
+      expect(munch1[:forecast][:temperature]).to eq(5.0)
+      expect(munch1[:forecast][:temperature]).to be_a(Float)
+
+      expect(munch1[:forecast][:summary]).to eq("Overcast")
+      expect(munch1[:forecast][:summary]).to be_a(String)
       expect(munch)
 
     end

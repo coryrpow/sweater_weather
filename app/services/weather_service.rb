@@ -1,16 +1,15 @@
 class WeatherService
   def self.get_munchie_weather(lat, lon)
     response = conn.get("forecast.json?key=#{Rails.application.credentials.weather_api[:key]}&q=#{lat}, #{lon}&days=5")
-    parse = JSON.parse(response.body, symbolize_names: true)
+    parse_m = JSON.parse(response.body, symbolize_names: true)
     # require 'pry';binding.pry
-    format_munchie(parse)
+    format_munchie(parse_m)
   end
 
-  def self.format_munchie(parse)
-    current = parse[:current]
+  def self.format_munchie(parse_m)
+    current = parse_m[:current]
     # require 'pry';binding.pry
     nothing_more = {
-      current_weather: {
         temperature: current[:temp_f],
         summary: current[:condition][:text]
         }
