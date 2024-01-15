@@ -58,5 +58,27 @@ RSpec.describe 'Munchies API endpoint' do
         expect(munch[:restaurant][:reviews]).to be_a(Integer)
         expect(munch[:restaurant][:reviews]).to eq(230)
     end
+
+    it "does NOT return data that is not needed", :vcr do
+      location = Location.create!(city: "Pueblo", state: "CO")
+        
+      get "/api/v1/munchies?destination=#{location.city},#{location.state}&food=italian"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      munchies = JSON.parse(response.body, symbolize_names: true)
+      munch = munchies[:data][:attributes]
+    
+      # require 'pry';binding.pry
+      expect(munch[:forecast]).to_not have_key(:last_updated_eppoc)
+      expect(munch[:forecast]).to_not have_key(:temp_c)
+      expect(munch[:forecast]).to_not have_key(:wind_mph)
+      expect(munch[:forecast]).to_not have_key(:wind_kph)
+
+      expect(munch[:restaurant]).to_not have_key(:alias)
+      expect(munch[:restaurant]).to_not have_key(:transactions)
+      expect(munch[:restaurant]).to_not have_key(:price)
+    end
   end
 end
