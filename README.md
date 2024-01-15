@@ -1,3 +1,5 @@
+# sweater_weather
+
 ## Project Description
 
 
@@ -15,7 +17,14 @@ Your team is working in a service-oriented architecture. The front-end will comm
 
 ## Requirements
 
-This repo utilized multiple APIs and requires obtaining keys and permissions from them accordingly. (Post in links and info to all APIs later)
+This repo utilized multiple APIs and requires that the developer using this repo obtain their own keys and permissions from them accordingly.
+
+[Mapquest API](https://developer.mapquest.com/documentation)
+[Weather API](https://www.weatherapi.com)
+
+To run this test suite, please obtain API keys to the above APIs and add them to the Rails Credentials file using the `EDITOR="code --wait" rails credentials:edit` command.
+
+Once those have been added, you can run the whole test suite with: bundle exec rspec
 
 ## Installation Instructions
 
@@ -26,5 +35,12 @@ This repo utilized multiple APIs and requires obtaining keys and permissions fro
  - `rails db:{drop,create,migrate,seed}`
  - `rails server` 
 
+## API Documentation
 
-# sweater_weather
+Response title
+
+get "response"
+
+example response:
+
+
