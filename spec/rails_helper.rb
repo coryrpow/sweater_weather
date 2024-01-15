@@ -74,11 +74,14 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-VCR.configure do |config|
-  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-  config.hook_into :webmock
-  config.filter_sensitive_data('<mapquest>') { Rails.application.credentials.mapquest[:key] }
-  config.filter_sensitive_data('<weather_api>') { Rails.application.credentials.weather_api[:key] }
-  config.filter_sensitive_data('<yelp>') { Rails.application.credentials.yelp[:key] }
-  config.configure_rspec_metadata!
-end
+#commenting out to continue on the project until I don't need to make fresh API calls
+
+
+# VCR.configure do |config|
+#   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+#   config.hook_into :webmock
+#   config.filter_sensitive_data('<mapquest>') { Rails.application.credentials.mapquest[:key] }
+#   config.filter_sensitive_data('<weather_api>') { Rails.application.credentials.weather_api[:key] }
+#   config.filter_sensitive_data('<yelp>') { Rails.application.credentials.yelp[:key] }
+#   config.configure_rspec_metadata!
+# end
