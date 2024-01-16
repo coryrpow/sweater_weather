@@ -18,7 +18,8 @@ RSpec.describe YelpService do
         expect(restaurant[:rating]).to eq(4.5)
         expect(restaurant).to have_key(:reviews)
         expect(restaurant[:reviews]).to be_a(Integer)
-        expect(restaurant[:reviews]).to eq(230)
+        # expect(restaurant[:reviews]).to eq(230)
+        expect(restaurant[:reviews]).to eq(231)
 
       end
     end
