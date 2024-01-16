@@ -13,6 +13,30 @@ class WeatherService
         }
   end
 
+  def self.get_destination_weather(lat, lon, time)
+    
+    response = conn.get("forecast.json?key=#{Rails.application.credentials.weather_api[:key]}&q=#{lat}, #{lon}&days=5")
+    first_parse = JSON.parse(response.body, symbolize_names: true)
+    parse = first_parse[:forecast][:forecastday]
+    eta_parse(parse, time)
+  end
+  
+  def self.eta_parse(parse, time)
+    t = time[:time].to_i
+    travel_time_diff = (Date.today - Time.at(t).to_date).to_i
+    require 'pry';binding.pry
+    #   parse.each do |day|
+    #    day[:hour].each do |hour|
+    #      time_diff = (Time.at(hour[:time_epoch]).to_date - Date.today).to_i
+    #      if time_diff == travel_time_diff
+    #        puts "match found!"
+    #      end  
+    #    end  
+    #  end  
+
+
+  end
+
   def self.get_city_weather(lat, lon)
     response = conn.get("forecast.json?key=#{Rails.application.credentials.weather_api[:key]}&q=#{lat}, #{lon}&days=5")
     parse = JSON.parse(response.body, symbolize_names: true)

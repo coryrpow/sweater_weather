@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe 'Login Page API endpoints' do
   describe "/api/v0/sessions" do
-    it "get recieves user login information and " do
+    it "get recieves user login information and sends a response back with the existing user's email and api_key" do
       existing_user = User.create(email: "coolguy@cool.com", password: "cellardoor", password_confirmation: "cellardoor", api_key: "69b815c468ed589d1ec5")
 
       session_params = {
