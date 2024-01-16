@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   # end
   get "/api/v0/forecast", to: "api/v0/forecast#show"
   get "/api/v1/munchies", to: "api/v1/munchies#show"
+  post "/api/v0/users", to: "api/v0/users#create"
 
 end
