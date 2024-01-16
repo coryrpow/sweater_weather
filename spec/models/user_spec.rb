@@ -23,4 +23,13 @@ RSpec.describe User, type: :model do
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
   end
+
+  describe "api_key creaiton" do
+    it "creates an api_key upon successful creation of a user" do
+      user = User.create!(email: 'fake@fake.com', password: 'Bruh', password_confirmation: 'Bruh')
+
+      expect(user.api_key).to_not be(nil)
+
+    end
+  end
 end
