@@ -13,6 +13,48 @@ class WeatherService
         }
   end
 
+  def self.get_destination_weather(lat, lon, time)
+    
+    response = conn.get("forecast.json?key=#{Rails.application.credentials.weather_api[:key]}&q=#{lat}, #{lon}&days=5")
+    first_parse = JSON.parse(response.body, symbolize_names: true)
+    parse = first_parse[:forecast][:forecastday]
+    weather_at_eta = eta_parse(parse, time)
+    # require 'pry';binding.pry
+  end
+  
+  def self.eta_parse(parse, time)
+    t = Time.now + time[:time]
+    rounded = Time.at((t.to_i / 3600.0).round * 3600)
+    date_time = rounded.strftime("%Y-%m-%d %H:%M")
+    date = date_time.split(' ').first
+    weather_at_eta = []
+    parse.each do |day|
+      if day[:date] == date
+        day[:hour].each do |hour|
+          if hour[:time] == date_time
+            # require 'pry';binding.pry
+            weather_data = {
+            datetime: hour[:time],
+            temperature: hour[:temp_f],
+            condition: hour[:condition][:text]
+            }
+            weather_at_eta << weather_data
+            break
+          end
+        end
+      end
+    end 
+    unless weather_at_eta.any?
+      weather_data = {
+              datetime: "Unknown",
+              temperature: "Temp nknown",
+              condition: "Conditions unknown"
+            }  
+            weather_at_eta << weather_data
+    end
+    weather_at_eta 
+  end
+
   def self.get_city_weather(lat, lon)
     response = conn.get("forecast.json?key=#{Rails.application.credentials.weather_api[:key]}&q=#{lat}, #{lon}&days=5")
     parse = JSON.parse(response.body, symbolize_names: true)

@@ -4,5 +4,5 @@ class UserSerializer
              :password,
              :password_confirmation,
              :api_key
-  # require 'pry';binding.pry
+
 end

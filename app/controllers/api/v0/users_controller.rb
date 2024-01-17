@@ -13,8 +13,6 @@ class Api::V0::UsersController < ApplicationController
     # require 'pry';binding.pry
   end
 
-
-
   private
 
   def user_creation_response(user)
@@ -51,6 +49,4 @@ class Api::V0::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
-
-
 end
