@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe 'Login Page API endpoints' do
-  describe "/api/v0/sessions" do
+  describe "/api/v0/sessions", :vcr do
     it "get recieves user login information and sends a response back with the existing user's email and api_key" do
       existing_user = User.create(email: "coolguy@cool.com", password: "cellardoor", password_confirmation: "cellardoor", api_key: "69b815c468ed589d1ec5")
 
@@ -50,18 +50,10 @@ RSpec.describe 'Login Page API endpoints' do
     
       post "/api/v0/sessions", params: session_params, as: :json, headers: { "CONTENT_TYPE" => "application/json" }
 
-
-      # can NOT figure out how to get a 400 response??? I get the correct info bakc in the hash, but the response is 
-      # successful every time? gonna move on and come back to it, inshallah.
-
-      # expect(response).to_not be_successful
-      # expect(response.status).to eq(401)
-
       user_info = JSON.parse(response.body, symbolize_names: true)
-      # require 'pry';binding.pry
-      # expect(user_info[:status]).to eq(401)
-      # expect(user_info[:status]).to eq(400)
-      # expect(user_info[:status]).to be_a(Integer)
+  
+      expect(user_info[:status]).to eq(401)
+      expect(user_info[:status]).to be_a(Integer)
       expect(user_info[:error]).to eq("Bzzt, wrongo. Please try again.")
       expect(user_info[:error]).to be_a(String)
 
@@ -77,17 +69,12 @@ RSpec.describe 'Login Page API endpoints' do
     
       post "/api/v0/sessions", params: session_params, as: :json, headers: { "CONTENT_TYPE" => "application/json" }
 
-      # expect(response).to_not be_successful
-      # expect(response.status).to eq(404)
-
       user_info = JSON.parse(response.body, symbolize_names: true)
-      # require 'pry';binding.pry
-      # expect(user_info[:status]).to eq(401)
-      # expect(user_info[:status]).to eq(400)
-      # expect(user_info[:status]).to be_a(Integer)
+
+      expect(user_info[:status]).to eq(401)
+      expect(user_info[:status]).to be_a(Integer)
       expect(user_info[:error]).to eq("Bzzt, wrongo. Please try again.")
       expect(user_info[:error]).to be_a(String)
-
     end
   end
 end

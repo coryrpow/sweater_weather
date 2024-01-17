@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe 'Landing Page API endpoints' do
-  describe "/api/v0/weather" do
+  describe "/api/v0/weather", :vcr do
     it "get requests all data needed for the landing page" do
       # location = create(:location)
       location = Location.create!(city: "Denver", state: "CO")
@@ -25,7 +25,6 @@ RSpec.describe 'Landing Page API endpoints' do
 
       f1 = forecast[:data][:attributes][:current_weather]
 
-      # require 'pry';binding.pry
       expect(f1.keys.count).to eq(8)
       expect(f1).to have_key(:last_updated)
       expect(f1[:last_updated]).to be_a(String)
@@ -74,7 +73,6 @@ RSpec.describe 'Landing Page API endpoints' do
       f3 = forecast[:data][:attributes][:hourly_weather]
 
       f3.each do |hour|
-        # require 'pry';binding.pry
         expect(hour).to be_a(Hash)
         expect(hour.keys.count).to eq(4)
 

@@ -3,14 +3,24 @@ class MapquestService
   def self.get_trip(origin, destination)
     response = conn_v2.get("route?key=#{Rails.application.credentials.mapquest[:key]}&from=#{origin}&to=#{destination}")
     parse = JSON.parse(response.body, symbolize_names: true)
-    # require 'pry';binding.pry
-    two_times(parse)
+    if parse[:route][:routeError]
+      impossible(parse)
+    else
+      two_times(parse)
+    end
   end
 
   def self.two_times(parse)
     {
       time: parse[:route][:time],
       formatted_time: parse[:route][:formattedTime]  
+    }
+  end
+
+  def self.impossible(parse)
+    {
+      impossible: "This road trip is not possible. Consider consulting a map.",  
+      status: 428
     }
   end
 

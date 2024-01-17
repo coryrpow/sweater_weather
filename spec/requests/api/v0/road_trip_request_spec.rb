@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'Road Trip API endpoints' do
-  describe "/api/v0/road_trip" do
-    it "get recieves user login information and " do
+  describe "/api/v0/road_trip", :vcr do
+    it "get recieves user login information and" do
       existing_user = User.create(email: "coolguy@cool.com", password: "cellardoor", password_confirmation: "cellardoor", api_key: "69b815c468ed589d1ec5")
 
       session_params = {
@@ -62,11 +62,11 @@ RSpec.describe 'Road Trip API endpoints' do
         expect(eta).to have_key(:condition)
 
         expect(eta[:datetime]).to be_a(String)
-        expect(eta[:datetime]).to eq("2024-01-17 01:00")
+        expect(eta[:datetime]).to eq("2024-01-17 04:00")
         expect(eta[:temperature]).to be_a(Float)
-        expect(eta[:temperature]).to eq(4.0)
+        expect(eta[:temperature]).to eq(4.4)
         expect(eta[:condition]).to be_a(String)
-        expect(eta[:condition]).to eq("Partly cloudy")
+        expect(eta[:condition]).to eq("Clear")
       end
     end
 
@@ -97,7 +97,6 @@ RSpec.describe 'Road Trip API endpoints' do
       expect(bad_api[:error]).to be_a(String)
       expect(bad_api[:status]).to eq(401)
       expect(bad_api[:status]).to be_a(Integer)
-
     end
 
     it "returns a 400 error if the api_key is blank" do
@@ -127,8 +126,40 @@ RSpec.describe 'Road Trip API endpoints' do
       expect(bad_api[:error]).to be_a(String)
       expect(bad_api[:status]).to eq(401)
       expect(bad_api[:status]).to be_a(Integer)
+    end
 
+    it "returns an error if the trip is not possible by road" do
+        
+      existing_user = User.create(email: "coolguy@cool.com", password: "cellardoor", password_confirmation: "cellardoor", api_key: "69b815c468ed589d1ec5")
 
+      session_params = {
+        "email": "coolguy@cool.com",
+        "password": "cellardoor",
+      }
+
+      post "/api/v0/sessions", params: session_params, as: :json, headers: { "CONTENT_TYPE" => "application/json" }
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      road_trip_params ={
+        "origin": "New York City,NY",
+        "destination": "London, UK",
+        "api_key": "69b815c468ed589d1ec5"
+      }
+
+      post "/api/v0/road_trip", params: road_trip_params, as: :json, headers: { "CONTENT_TYPE" => "application/json" }
+
+      impossible_response = JSON.parse(response.body, symbolize_names: true)
+
+      impossible = impossible_response[:data][:attributes][:weather_at_eta]
+
+      impossible.each do |nope|
+        expect(nope[:impossible]).to eq("This road trip is not possible. Consider consulting a map.")
+        expect(nope[:impossible]).to be_a(String)
+        expect(nope[:status]).to eq(428)
+        expect(nope[:status]).to be_a(Integer)
+      end
     end
   end
 end

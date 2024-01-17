@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe WeatherService do
   context 'class methods' do
-    context '#get_city_weather' do
+    context '#get_city_weather', :vcr do
       it 'returns a hash of weather data for specific lat and lon coordinates' do
         weather = WeatherService.get_city_weather(38.26375, -104.61252)
         # require 'pry';binding.pry
@@ -82,7 +82,7 @@ RSpec.describe WeatherService do
       end
     end
 
-    context "get_munchie_weather" do
+    context "get_munchie_weather", :vcr do
       it "returns a hash of only needed data for a restaurant" do
         weather = WeatherService.get_munchie_weather(38.26375, -104.61252)
 

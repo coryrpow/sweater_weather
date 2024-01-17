@@ -19,7 +19,6 @@ class WeatherService
     first_parse = JSON.parse(response.body, symbolize_names: true)
     parse = first_parse[:forecast][:forecastday]
     weather_at_eta = eta_parse(parse, time)
-    # require 'pry';binding.pry
   end
   
   def self.eta_parse(parse, time)
@@ -32,7 +31,6 @@ class WeatherService
       if day[:date] == date
         day[:hour].each do |hour|
           if hour[:time] == date_time
-            # require 'pry';binding.pry
             weather_data = {
             datetime: hour[:time],
             temperature: hour[:temp_f],

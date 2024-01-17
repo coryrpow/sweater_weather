@@ -1,18 +1,13 @@
 class Api::V0::RoadTripController < ApplicationController
   def create
     user = User.find_by(api_key: params[:api_key])
-
     if user
       road_trip = RoadTripFacade.get_road_trip(params[:origin], params[:destination])
       render json: RoadTripSerializer.new(road_trip)
     else
       render json: bad_api(user), status: :unauthorized
     end
-
   end
-
-
-
 
   private
 
@@ -41,11 +36,4 @@ class Api::V0::RoadTripController < ApplicationController
       status: 401
     }
   end
-
-  # def empty_api(user)
-  #   {
-  #     error: "Must provide api_key.",
-  #     status: 401
-  #   }
-  # end
 end

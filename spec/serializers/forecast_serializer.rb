@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ForecastSerializer do
-  describe '#facade methods' do
+  describe '#facade methods', :vcr do
     it 'can get the weather forecast of a city' do
       location = Location.create!(city: "Denver", state: "CO")
 

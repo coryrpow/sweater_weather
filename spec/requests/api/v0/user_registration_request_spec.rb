@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'Registration Page API endpoints' do
+RSpec.describe 'Registration Page API endpoints', :vcr do
   describe "/api/v0/users" do
     it "get recieves user registration and returns an api_key" do
       user_params = ({
@@ -18,7 +18,6 @@ RSpec.describe 'Registration Page API endpoints' do
       user_info = JSON.parse(response.body, symbolize_names: true)
 
       expect(user_info).to be_a(Hash)
-      require 'pry';binding.pry
      
       expect(user_info[:data]).to be_a(Hash)
       expect(user_info[:data]).to have_key(:id)
@@ -58,12 +57,11 @@ RSpec.describe 'Registration Page API endpoints' do
       expect(response.status).to eq(422)
 
       user_info = JSON.parse(response.body, symbolize_names: true)
-      # require 'pry';binding.pry
+      
       expect(user_info[:status]).to eq(422)
       expect(user_info[:status]).to be_a(Integer)
       expect(user_info[:error]).to eq("doesn't match Password")
       expect(user_info[:error]).to be_a(String)
-
     end
 
     it "returns a 400 error if the email is already in use by another user" do
@@ -82,12 +80,11 @@ RSpec.describe 'Registration Page API endpoints' do
       expect(response.status).to eq(422)
 
       user_info = JSON.parse(response.body, symbolize_names: true)
-      # require 'pry';binding.pry
+
       expect(user_info[:status]).to eq(422)
       expect(user_info[:status]).to be_a(Integer)
       expect(user_info[:error]).to eq("This email already has an account with us.")
       expect(user_info[:error]).to be_a(String)
-
     end
   end
 end
