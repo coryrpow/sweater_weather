@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe YelpService do
   context 'class methods' do
-    context '#get_city_weather' do
+    context '#get_city_weather', :vcr do
       it 'returns a hash of weather data for specific lat and lon coordinates' do
         restaurant = YelpService.get_restaurant("italian", 38.26375, -104.61252)
         expect(restaurant).to be_a(Hash)
@@ -18,9 +18,7 @@ RSpec.describe YelpService do
         expect(restaurant[:rating]).to eq(4.5)
         expect(restaurant).to have_key(:reviews)
         expect(restaurant[:reviews]).to be_a(Integer)
-        # expect(restaurant[:reviews]).to eq(230)
-        expect(restaurant[:reviews]).to eq(231)
-
+        expect(restaurant[:reviews]).to eq(230)
       end
     end
   end

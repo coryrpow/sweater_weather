@@ -2,13 +2,12 @@ require 'rails_helper'
 
 RSpec.describe MunchiesFacade do
   describe '#facade methods' do
-    it 'can get data for a city restaurant that has the yelp rating and reviews as well as the forecast for the city' do
+    it 'can get data for a city restaurant that has the yelp rating and reviews as well as the forecast for the city', :vcr do
      
       munchie = MunchiesFacade.get_munchie("pueblo,co", "italian")
 
       expect(munchie).to be_a(Munchie)
       # expect(munchie.keys.count).to eq(3)
-      # require 'pry';binding.pry
       
       expect(munchie.destination_city).to eq("pueblo,co")
       expect(munchie.forecast).to be_a(Hash)

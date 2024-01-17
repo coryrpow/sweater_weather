@@ -9,7 +9,7 @@
 #   end
 
 
-  user =  User.create(email: "weatherman@weather.com",
+  user =  User.create!(email: "weatherman@weather.com",
                       password: "iluvstormz",
-                      password_confirmation: "ilovestormz",
+                      password_confirmation: "iluvstormz",
                       api_key: "69b815c468ed589d1ec5")

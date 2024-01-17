@@ -2,13 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Forecast do
   describe 'initialize' do
-    it 'creates a forecast object' do
+    it 'creates a forecast object', :vcr do
       mapquest_response = MapquestService.get_location("Denver,CO")
       weather_response = WeatherService.get_city_weather(mapquest_response[:lat], mapquest_response[:lng])
       forecast = Forecast.new(weather_response)
-
-
-      # need to change out for a vcr call and have actual call of a place with the correct info
 
       expect(forecast).to be_a(Forecast)
       expect(forecast.current_weather).to be_a(Hash)

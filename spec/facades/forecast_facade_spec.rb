@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ForecastFacade do
   describe '#facade methods' do
-    it 'can get the weather forecast of a city' do
-      # VCR.use_cassette('search_for_terminator', record: :new_episodes) do
+    it 'can get the weather forecast of a city', :vcr do
       location = Location.create!(city: "Denver", state: "CO")
 
       forecast = ForecastFacade.get_forecast("#{location.city},#{location.state}")

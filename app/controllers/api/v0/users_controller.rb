@@ -10,7 +10,6 @@ class Api::V0::UsersController < ApplicationController
       render json: UserSerializer.new(user), status: :created
       # render json: user_creation_response(user), status: :created
     end
-    # require 'pry';binding.pry
   end
 
   private
@@ -39,13 +38,12 @@ class Api::V0::UsersController < ApplicationController
   end
 
   def password_error(user)
-    # require 'pry';binding.pry
     {
-      # error: "#{user.errors[:password_confirmation]}",
       error: "doesn't match Password",
       status: 422
     }
   end
+  
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end

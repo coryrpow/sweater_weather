@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Munchie do
   describe 'initialize' do
-    it 'creates a forecast object' do
+    it 'creates a forecast object', :vcr do
       mapquest_response = MapquestService.get_location("Pueblo,CO")
       restaurant_response = YelpService.get_restaurant("italian", mapquest_response[:lat], mapquest_response[:lng] )
       weather_response = WeatherService.get_munchie_weather(mapquest_response[:lat], mapquest_response[:lng])
       munchie = Munchie.new("Pueblo,CO", restaurant_response, weather_response)
 
       expect(munchie).to be_a(Munchie)
-      # require 'pry';binding.pry
       expect(munchie.destination_city).to eq("Pueblo,CO")
       expect(munchie.destination_city).to be_a(String)
       expect(munchie.id).to be(nil)

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe 'Munchies API endpoint' do
 
   location = 
-  describe "/api/v1/munchies" do
+  describe "/api/v1/munchies", :vcr do
     it "get requests all data needed for the landing page" do
         location = Location.create!(city: "Pueblo", state: "CO")
         
@@ -40,7 +40,6 @@ RSpec.describe 'Munchies API endpoint' do
         # expect(munch[:forecast][:summary]).to eq("Overcast")
         expect(munch[:forecast]).to have_key(:summary)
         expect(munch[:forecast][:summary]).to be_a(String)
-        # require 'pry';binding.pry
       
         expect(munch[:restaurant]).to be_a(Hash)
         expect(munch[:restaurant].keys.count).to eq(4)
@@ -70,7 +69,6 @@ RSpec.describe 'Munchies API endpoint' do
       munchies = JSON.parse(response.body, symbolize_names: true)
       munch = munchies[:data][:attributes]
     
-      # require 'pry';binding.pry
       expect(munch[:forecast]).to_not have_key(:last_updated_eppoc)
       expect(munch[:forecast]).to_not have_key(:temp_c)
       expect(munch[:forecast]).to_not have_key(:wind_mph)
