@@ -19,22 +19,36 @@ class WeatherService
     first_parse = JSON.parse(response.body, symbolize_names: true)
     parse = first_parse[:forecast][:forecastday]
     eta_parse(parse, time)
+    require 'pry';binding.pry
   end
   
   def self.eta_parse(parse, time)
-    t = time[:time].to_i
-    travel_time_diff = (Date.today - Time.at(t).to_date).to_i
-    require 'pry';binding.pry
-    #   parse.each do |day|
-    #    day[:hour].each do |hour|
-    #      time_diff = (Time.at(hour[:time_epoch]).to_date - Date.today).to_i
-    #      if time_diff == travel_time_diff
-    #        puts "match found!"
-    #      end  
-    #    end  
-    #  end  
-
-
+    t = Time.now + time[:time]
+    rounded = Time.at((t.to_i / 3600.0).round * 3600)
+    date_time = rounded.strftime("%Y-%m-%d %H:%M")
+    date = date_time.split(' ').first
+    # require 'pry';binding.pry
+      parse.each do |day|
+        if day[:date] == date
+          day[:hour].each do |hour|
+            if hour[:time] == date_time
+              # require 'pry';binding.pry
+              {
+              datetime: hour[:time],
+              temperature: hour[:temp_f],
+              condition: hour[:condition][:text]
+              }
+            end 
+          end
+        else
+          {
+            datetime: "Unknown",
+            temperature: "Temp nknown",
+            condition: "Conditions unknown"
+          }  
+        end
+      end  
+      
   end
 
   def self.get_city_weather(lat, lon)
