@@ -8,27 +8,10 @@ class Api::V0::UsersController < ApplicationController
       render json: password_error(user), status: :unprocessable_entity
     else user.save
       render json: UserSerializer.new(user), status: :created
-      # render json: user_creation_response(user), status: :created
     end
   end
 
   private
-
-  def user_creation_response(user)
-    {
-      status: 201,
-      body: {
-        data: {
-          type: 'users',
-          id: user.id,
-          attributes: {
-            email: user.email,
-            api_key: user.api_key
-          }
-        }
-      }
-    }
-  end
 
   def email_taken(user)
     {
@@ -43,7 +26,7 @@ class Api::V0::UsersController < ApplicationController
       status: 422
     }
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end

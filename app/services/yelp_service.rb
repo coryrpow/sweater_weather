@@ -3,7 +3,6 @@ class YelpService
   def self.get_restaurant(food_type, lat, lon)
     response = conn.get("businesses/search?term=#{food_type}&latitude=#{lat}&longitude=#{lon}")
     parse = JSON.parse(response.body, symbolize_names: true)
-    # require 'pry';binding.pry
     munchie_data = []
     # parse[:businesses].each do |b|
     b = parse[:businesses].first
@@ -14,7 +13,6 @@ class YelpService
         reviews: b[:review_count]
       }
     # end
-    
   end
 
   def self.conn

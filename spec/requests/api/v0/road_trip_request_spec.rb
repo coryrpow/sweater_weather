@@ -61,12 +61,14 @@ RSpec.describe 'Road Trip API endpoints' do
         expect(eta).to have_key(:temperature)
         expect(eta).to have_key(:condition)
 
+        # commented out lines only pass with current, up to date data
+        
         expect(eta[:datetime]).to be_a(String)
-        expect(eta[:datetime]).to eq("2024-01-17 04:00")
+        # expect(eta[:datetime]).to eq("2024-01-17 04:00")
         expect(eta[:temperature]).to be_a(Float)
-        expect(eta[:temperature]).to eq(4.4)
+        # expect(eta[:temperature]).to eq(4.4)
         expect(eta[:condition]).to be_a(String)
-        expect(eta[:condition]).to eq("Clear")
+        # expect(eta[:condition]).to eq("Clear")
       end
     end
 
