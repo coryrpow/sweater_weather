@@ -1,18 +1,18 @@
 # Sweater Weather
 Created by: Cory Powell | [LinkedIn](https://www.linkedin.com/in/coryrpow/)
 ## Directory
-- [Project Description](project-description)
-- [Dates](dates)
-- [Built Using](built-using)
-- [Testing](testing)
-- [Installation Instructions](installation-instructions)
-- [Requirements](requirements)
-- [Learning Goals](learning-goals)
-- [API Documentation](api-documentation)
-  - [GET forecast](retrieve-weather-forecast-for-a-city)
-  - [POST users](user-registration)
-  - [POST login](login)
-  - [POST Road Trip](road-trip)
+- [Project Description](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#project-description)
+- [Dates](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#datess)
+- [Built Using](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#built-using)
+- [Testing](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#testing)
+- [Installation Instructions](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#installation-instructions)
+- [Requirements](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#requirements)
+- [Learning Goals](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#learning-goals)
+- [API Documentation](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#api-documentation)
+  - [GET forecast](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#retrieve-weather-forecast-for-a-city)
+  - [POST users](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#user-registration)
+  - [POST login](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#login)
+  - [POST Road Trip](https://github.com/coryrpow/sweater_weather?tab=readme-ov-file#road-trip)
 
   
 ## Project Description

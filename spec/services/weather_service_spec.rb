@@ -5,15 +5,13 @@ RSpec.describe WeatherService do
     context '#get_city_weather', :vcr do
       it 'returns a hash of weather data for specific lat and lon coordinates' do
         weather = WeatherService.get_city_weather(38.26375, -104.61252)
-        # require 'pry';binding.pry
+  
         expect(weather).to be_a(Hash)
-
         expect(weather).to have_key(:current_weather)
         expect(weather).to have_key(:daily_weather)
         expect(weather).to have_key(:hourly_weather)
 
         w1 = weather[:current_weather]
-
     
         expect(w1.keys.count).to eq(8)
         expect(w1).to have_key(:last_updated)
@@ -63,7 +61,6 @@ RSpec.describe WeatherService do
         w3 = weather[:hourly_weather]
 
         w3.each do |hour|
-          # require 'pry';binding.pry
           expect(hour).to be_a(Hash)
           expect(hour.keys.count).to eq(4)
 
