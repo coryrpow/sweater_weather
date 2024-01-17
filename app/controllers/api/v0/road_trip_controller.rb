@@ -37,7 +37,7 @@ class Api::V0::RoadTripController < ApplicationController
 
   def bad_api(user)
     {
-      error: "Api_key does not match or is blank.",
+      error: "api_key does not match or is blank.",
       status: 401
     }
   end

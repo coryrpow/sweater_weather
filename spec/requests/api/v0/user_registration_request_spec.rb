@@ -18,6 +18,7 @@ RSpec.describe 'Registration Page API endpoints' do
       user_info = JSON.parse(response.body, symbolize_names: true)
 
       expect(user_info).to be_a(Hash)
+      require 'pry';binding.pry
      
       expect(user_info[:data]).to be_a(Hash)
       expect(user_info[:data]).to have_key(:id)

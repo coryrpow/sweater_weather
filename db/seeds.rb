@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+  user =  User.create(email: "weatherman@weather.com",
+                      password: "iluvstormz",
+                      password_confirmation: "ilovestormz",
+                      api_key: "69b815c468ed589d1ec5")
